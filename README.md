@@ -60,8 +60,8 @@ Si Bestie is your go-to study buddy infused with AI smarts to enhance your learn
 
 ### 1. Study Space
 
-  <img src="assets/docs/05.png" height=350 style="padding-right: 15px;" />
-  <img src="assets/docs/05.1.png" height=350 style="padding-right: 15px;"/><img src="assets/docs/study-space.png" height=350 />
+  <img src="assets/docs/05.png" height=350 />
+  <img src="assets/docs/05.1.png" height=350/><img src="assets/docs/study-space.png" height=350 />
 
 The core feature of SiBestie is the "Study Space" This feature allows users to create personalized study sessions based on their learning materials. Users can start a study session by uploading their study materials, such as PDFs or Word documents. They can then interact with an AI to ask questions about the material, enhancing their understanding.
 
@@ -86,7 +86,7 @@ The "Chat with AI" feature enables users to interact with an AI to get answers t
 
 ### 3. Ask Image
 
-  <img src="assets/docs/04.png" height=350 style="padding-right: 15px;" />
+  <img src="assets/docs/04.png" height=350 />
   <img src="assets/docs/04.1.png" height=350/>
 
 With the "Ask Image" feature, users can upload images and ask the AI questions about them. This feature allows users to gain more information or explanations about the images they encounter.
@@ -100,7 +100,7 @@ With the "Ask Image" feature, users can upload images and ask the AI questions a
 
 ### 4. Saved History Activity
 
-  <img src="assets/docs/02.1.png" height=350 style="padding-right: 15px;" /><img src="assets/docs/02.2.png" height=350 />
+  <img src="assets/docs/02.1.png" height=350 /><img src="assets/docs/02.2.png" height=350 />
 
 The "Saved History Activity" feature stores all user activities in the app for easy access. Users can view and manage their saved learning activities within the app.
 
@@ -111,8 +111,8 @@ The "Saved History Activity" feature stores all user activities in the app for e
 
 ### 5. Quiz
 
-  <img src="assets/docs/06.png" height=350 style="padding-right: 15px;" />
-  <img src="assets/docs/06.1.png" height=350 style="padding-right: 15px;"/><img src="assets/docs/05.1.png" height=350 />
+  <img src="assets/docs/06.png" height=350 />
+  <img src="assets/docs/06.1.png" height=350/><img src="assets/docs/05.1.png" height=350 />
 
 The "Quiz" feature generates questions and answers based on the uploaded study materials. It helps users test their understanding of the material they are studying.
 
@@ -125,8 +125,8 @@ The "Quiz" feature generates questions and answers based on the uploaded study m
 
 ### 6. Flashcard
 
-  <img src="assets/docs/07.png" height=350 style="padding-right: 15px;" />
-  <img src="assets/docs/07.1.png" height=350 style="padding-right: 15px;"/><img src="assets/docs/05.1.png" height=350 />
+  <img src="assets/docs/07.png" height=350 />
+  <img src="assets/docs/07.1.png" height=350/><img src="assets/docs/05.1.png" height=350 />
 
 The "Flashcard" feature creates flashcards based on the uploaded study materials. It assists users in deepening their understanding of the material.
 
@@ -139,7 +139,7 @@ The "Flashcard" feature creates flashcards based on the uploaded study materials
 
 ### 7. Summary
 
-  <img src="assets/docs/08.png" height=350 style="padding-right: 15px;" />
+  <img src="assets/docs/08.png" height=350 />
   <img src="assets/docs/05.1.png" height=350/>
 
 The "Summary" feature generates summaries of the studied materials based on the uploaded files. It helps users remember key information from their study materials.
