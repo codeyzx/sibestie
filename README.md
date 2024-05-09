@@ -60,9 +60,7 @@ Si Bestie is your go-to study buddy infused with AI smarts to enhance your learn
 
 ### 1. Study Space
 
-  <img src="assets/docs/05.png" height=350 /><img src="assets/docs/05.1.png" height=350/>
-  
-  <img src="assets/docs/study-space.png" height=350 />
+  <img src="assets/docs/05.png" height=350 /><img src="assets/docs/05.1.png" height=350/><img src="assets/docs/study-space.png" height=350 />
 
 The core feature of SiBestie is the "Study Space" This feature allows users to create personalized study sessions based on their learning materials. Users can start a study session by uploading their study materials, such as PDFs or Word documents. They can then interact with an AI to ask questions about the material, enhancing their understanding.
 
