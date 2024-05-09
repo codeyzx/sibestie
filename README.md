@@ -22,7 +22,7 @@
 
 <p  align="center">
 
-Si Bestie is your go-to study buddy infused with AI smarts to enhance your learning journey. It's designed to simplify studying with features like "Create Study Space" for easy access to your materials, and "Ask Bot" for quick clarifications. Plus, it offers quizzes, flashcards, and summaries tailored to your needs. With the "User Activity History," tracking progress is a breeze. Si Bestie is here to make learning simpler, more efficient, and enjoyable for you.
+Si Bestie is your go-to study buddy infused with AI smarts to enhance your learning journey. It's designed to simplify studying with features like "Create Study Space" for easy access to your materials, and "Chat With AI" for quick clarifications. Plus, it offers quizzes, flashcards, and summaries tailored to your needs. Si Bestie is here to make learning simpler, more efficient, and enjoyable for you.
 
 <br/>
 <br/>
