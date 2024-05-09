@@ -12,7 +12,7 @@
 
 <div  align="center">
 
-<a  href="https://github.com/codeyzx/si-bestie">
+<a  href="https://github.com/codeyzx/sibestie">
 
 <img  src="assets/images/launcher_icon.png"  alt="Logo"  width="285">
 
@@ -27,11 +27,11 @@ Si Bestie is your go-to study buddy infused with AI smarts to enhance your learn
 <br/>
 <br/>
 
-<a  href="https://github.com/codeyzx/si-bestie">View Demo</a>
+<a  href="https://github.com/codeyzx/sibestie">View Demo</a>
 ·
-<a  href="https://github.com/codeyzx/si-bestie/issues">Report Bug</a>
+<a  href="https://github.com/codeyzx/sibestie/issues">Report Bug</a>
 ·
-<a  href="https://github.com/codeyzx/si-bestie/issues">Request Feature</a>
+<a  href="https://github.com/codeyzx/sibestie/issues">Request Feature</a>
 
 </p>
 
@@ -72,7 +72,7 @@ Keep tabs on your learning journey with Si Bestie's User Activity History featur
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/codeyzx/si-bestie.git
+   git clone https://github.com/codeyzx/sibestie.git
    ```
 
 2. Install dependencies:
@@ -99,13 +99,13 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 - Rafka Imanda Putra
 - M. Amadeus Andika Fadhil
 
-[contributors-shield]: https://img.shields.io/github/contributors/codeyzx/si-bestie.svg?style=for-the-badge
-[contributors-url]: https://github.com/codeyzx/si-bestie/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/codeyzx/si-bestie.svg?style=for-the-badge
-[forks-url]: https://github.com/codeyzx/si-bestie/network/members
-[stars-shield]: https://img.shields.io/github/stars/codeyzx/si-bestie.svg?style=for-the-badge
-[stars-url]: https://github.com/codeyzx/si-bestie/stargazers
-[issues-shield]: https://img.shields.io/github/issues/codeyzx/si-bestie.svg?style=for-the-badge
-[issues-url]: https://github.com/codeyzx/si-bestie/issues
+[contributors-shield]: https://img.shields.io/github/contributors/codeyzx/sibestie.svg?style=for-the-badge
+[contributors-url]: https://github.com/codeyzx/sibestie/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/codeyzx/sibestie.svg?style=for-the-badge
+[forks-url]: https://github.com/codeyzx/sibestie/network/members
+[stars-shield]: https://img.shields.io/github/stars/codeyzx/sibestie.svg?style=for-the-badge
+[stars-url]: https://github.com/codeyzx/sibestie/stargazers
+[issues-shield]: https://img.shields.io/github/issues/codeyzx/sibestie.svg?style=for-the-badge
+[issues-url]: https://github.com/codeyzx/sibestie/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/codeyzx/si-bestie/blob/main/LICENSE.txt
+[license-url]: https://github.com/codeyzx/sibestie/blob/main/LICENSE.txt
