@@ -109,9 +109,7 @@ The "Saved History Activity" feature stores all user activities in the app for e
 
 ### 5. Quiz
 
-  <img src="assets/docs/06.png" height=350 /><img src="assets/docs/06.1.png" height=350/>
-  
-  <img src="assets/docs/05.1.png" height=350 />
+  <img src="assets/docs/06.png" height=350 /><img src="assets/docs/06.1.png" height=350/><img src="assets/docs/05.1.png" height=350 />
 
 The "Quiz" feature generates questions and answers based on the uploaded study materials. It helps users test their understanding of the material they are studying.
 
@@ -124,9 +122,7 @@ The "Quiz" feature generates questions and answers based on the uploaded study m
 
 ### 6. Flashcard
 
-  <img src="assets/docs/07.png" height=350 /><img src="assets/docs/07.1.png" height=350/>
-  
-  <img src="assets/docs/05.1.png" height=350 />
+  <img src="assets/docs/07.png" height=350 /><img src="assets/docs/07.1.png" height=350/><img src="assets/docs/05.1.png" height=350 />
 
 The "Flashcard" feature creates flashcards based on the uploaded study materials. It assists users in deepening their understanding of the material.
 
