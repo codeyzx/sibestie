@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -125,9 +126,12 @@ class ChatPage extends ConsumerWidget {
                         if (chatBot.typeOfBot == TypeOfBot.image)
                           CircleAvatar(
                             maxRadius: 21,
-                            backgroundImage: FileImage(
-                              File(chatBot.attachmentPath!),
-                            ),
+                            backgroundImage: !kIsWeb
+                                ? FileImage(
+                                    File(chatBot.attachmentPath!),
+                                  ) as ImageProvider<Object>?
+                                : NetworkImage(chatBot.attachmentPath!)
+                                    as ImageProvider<Object>?,
                             child: TextButton(
                               onPressed: () {
                                 showDialog<AlertDialog>(
@@ -138,9 +142,13 @@ class ChatPage extends ConsumerWidget {
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(16),
-                                          child: Image.file(
-                                            File(chatBot.attachmentPath!),
-                                          ),
+                                          child: !kIsWeb
+                                              ? Image.file(
+                                                  File(chatBot.attachmentPath!),
+                                                )
+                                              : Image.network(
+                                                  chatBot.attachmentPath!,
+                                                ),
                                         ),
                                       ),
                                       actions: <Widget>[

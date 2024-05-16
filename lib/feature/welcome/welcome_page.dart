@@ -19,8 +19,6 @@ class WelcomePage extends StatelessWidget {
           child: Stack(
             children: [
               Positioned(
-                left: -300,
-                top: -00,
                 child: Container(
                   height: 500.h,
                   width: 600.w,
@@ -82,7 +80,7 @@ class WelcomePage extends StatelessWidget {
                             SizedBox(width: 4.w),
                             Image.asset(
                               AssetConstants.aiStarLogo,
-                              scale: 23,
+                              scale: 23.r,
                             ),
                           ],
                         ),
@@ -123,6 +121,7 @@ class WelcomePage extends StatelessWidget {
                         'Get Started',
                         style: context.textTheme.labelLarge!.copyWith(
                           color: context.colorScheme.surface,
+                          fontSize: 14.sp,
                         ),
                       ),
                     ),
