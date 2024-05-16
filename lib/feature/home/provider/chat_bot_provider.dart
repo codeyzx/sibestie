@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -70,6 +71,40 @@ class ChatBotListNotifier extends StateNotifier<List<ChatBot>> {
     final response = geminiRepository.batchEmbedChunks(textChunks: textChunks);
 
     return response;
+  }
+
+  Future<List<String>> getChunksFromPDFWeb(Uint8List fileBytes) async {
+    final List<String> pageTextChunks = [];
+
+    final PdfDocument document = PdfDocument(
+      inputBytes: fileBytes,
+    );
+
+    final PdfTextExtractor extractor = PdfTextExtractor(document);
+
+    for (int pageIndex = 0; pageIndex < document.pages.count; pageIndex++) {
+      final List<TextLine> textLines =
+          extractor.extractTextLines(startPageIndex: pageIndex);
+      final int halfLineIndex = (textLines.length / 2).floor();
+      final StringBuffer firstHalfText = StringBuffer();
+      final StringBuffer secondHalfText = StringBuffer();
+
+      for (int lineIndex = 0; lineIndex < textLines.length; lineIndex++) {
+        if (lineIndex < halfLineIndex) {
+          firstHalfText.writeln(textLines[lineIndex].text);
+        } else {
+          secondHalfText.writeln(textLines[lineIndex].text);
+        }
+      }
+
+      if (firstHalfText.isNotEmpty) {
+        pageTextChunks.add(firstHalfText.toString());
+      }
+      if (secondHalfText.isNotEmpty) {
+        pageTextChunks.add(secondHalfText.toString());
+      }
+    }
+    return pageTextChunks;
   }
 
   Future<List<String>> getChunksFromPDF(String filePath) async {

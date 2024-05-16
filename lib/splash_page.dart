@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:si_bestie/core/config/assets_constants.dart';
 import 'package:si_bestie/core/extension/context.dart';
 import 'package:si_bestie/core/navigation/route.dart';
@@ -23,11 +24,18 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Future<void> _navigateToNextPage() async {
+    // await Future.delayed(const Duration(seconds: 3), () async {
+    //   final String? apiKey = await secureStorage.getApiKey();
+    //   if (apiKey == null || apiKey.isEmpty) {
+    //     AppRoute.welcome.go(context);
+    //   } else {}
+    //   AppRoute.welcome.go(context);
+    // });
     await Future.delayed(const Duration(seconds: 3), () async {
-      final String? apiKey = await secureStorage.getApiKey();
-      if (apiKey == null || apiKey.isEmpty) {
-        AppRoute.welcome.go(context);
-      } else {}
+      // final String? apiKey = await secureStorage.getApiKey();
+      // if (apiKey == null || apiKey.isEmpty) {
+      //   AppRoute.welcome.go(context);
+      // } else {}
       AppRoute.welcome.go(context);
     });
   }
@@ -43,10 +51,10 @@ class _SplashPageState extends State<SplashPage> {
           children: [
             Image.asset(
               AssetConstants.sibestieLogo,
-              width: 250,
-              height: 250,
+              width: 250.w,
+              height: 250.h,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
             ShaderMask(
               shaderCallback: (bounds) {
                 return LinearGradient(
@@ -56,9 +64,9 @@ class _SplashPageState extends State<SplashPage> {
                   ],
                 ).createShader(bounds);
               },
-              child: const Text(
+              child: Text(
                 'SiBestie',
-                style: TextStyle(fontSize: 64, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 64.sp, fontWeight: FontWeight.bold),
               ),
             ),
           ],

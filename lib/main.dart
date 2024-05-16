@@ -1,4 +1,3 @@
-import 'package:easy_screenutil/easy_screenutil.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,20 +13,38 @@ import 'package:si_bestie/feature/quiz/model/question.dart';
 import 'package:si_bestie/feature/quiz/model/quiz.dart';
 
 Future<void> main() async {
-  ScreenUtil.ensureInitialized(designWidth: 390);
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
+  );
+
   _initGoogleFonts();
 
-  final appDocumentDir = await getApplicationDocumentsDirectory();
-  Hive
-    ..init(appDocumentDir.path)
-    ..registerAdapter(ChatBotAdapter())
-    ..registerAdapter(QuizAdapter())
-    ..registerAdapter(FlashcardAdapter())
-    ..registerAdapter(QuestionAdapter())
-    ..registerAdapter(OptionAdapter());
-  await Hive.openBox<ChatBot>('chatbots');
-  await Hive.openBox<Quiz>('quizzes');
-  await Hive.openBox<Flashcard>('flashcards');
+  if (kIsWeb) {
+    // hive for web
+    Hive
+      ..init('hive')
+      ..registerAdapter(ChatBotAdapter())
+      ..registerAdapter(QuizAdapter())
+      ..registerAdapter(FlashcardAdapter())
+      ..registerAdapter(QuestionAdapter())
+      ..registerAdapter(OptionAdapter());
+    await Hive.openBox<ChatBot>('chatbots');
+    await Hive.openBox<Quiz>('quizzes');
+    await Hive.openBox<Flashcard>('flashcards');
+  } else {
+    final appDocumentDir = await getApplicationDocumentsDirectory();
+    Hive
+      ..init(appDocumentDir.path)
+      ..registerAdapter(ChatBotAdapter())
+      ..registerAdapter(QuizAdapter())
+      ..registerAdapter(FlashcardAdapter())
+      ..registerAdapter(QuestionAdapter())
+      ..registerAdapter(OptionAdapter());
+    await Hive.openBox<ChatBot>('chatbots');
+    await Hive.openBox<Quiz>('quizzes');
+    await Hive.openBox<Flashcard>('flashcards');
+  }
 
   runApp(
     const ProviderScope(

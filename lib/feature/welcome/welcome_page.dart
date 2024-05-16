@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:si_bestie/core/config/assets_constants.dart';
 import 'package:si_bestie/core/extension/context.dart';
@@ -14,15 +15,15 @@ class WelcomePage extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.all(8.r),
           child: Stack(
             children: [
               Positioned(
                 left: -300,
                 top: -00,
                 child: Container(
-                  height: 500,
-                  width: 600,
+                  height: 500.h,
+                  width: 600.w,
                   decoration: BoxDecoration(
                     gradient: RadialGradient(
                       colors: [
@@ -74,11 +75,11 @@ class WelcomePage extends StatelessWidget {
                               'Si Bestie AI',
                               style: TextStyle(
                                 color: context.colorScheme.background,
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            const SizedBox(width: 4),
+                            SizedBox(width: 4.w),
                             Image.asset(
                               AssetConstants.aiStarLogo,
                               scale: 23,
@@ -89,6 +90,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                     Lottie.asset(
                       AssetConstants.onboardingAnimation,
+                      height: 400.h,
                     ),
                     ShaderMask(
                       shaderCallback: (bounds) {
@@ -102,7 +104,7 @@ class WelcomePage extends StatelessWidget {
                       child: Text(
                         'Welcome ✨',
                         style: context.textTheme.bodyLarge!.copyWith(
-                          fontSize: 48,
+                          fontSize: 24.sp,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 1.5,
                         ),

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -35,6 +36,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
   String filePath = '';
+  Uint8List fileBytes = Uint8List(0);
 
   @override
   void initState() {
@@ -352,21 +354,38 @@ class _HomePageState extends ConsumerState<HomePage> {
                                         ),
                                         const SizedBox(height: 8),
                                         InkWell(
-                                          onTap: () async {
-                                            final result = await FilePicker
-                                                .platform
-                                                .pickFiles(
-                                              type: FileType.custom,
-                                              allowedExtensions: ['pdf'],
-                                            );
-                                            if (result != null) {
-                                              final filePath =
-                                                  result.files.single.path;
-                                              setState(() {
-                                                this.filePath = filePath!;
-                                              });
-                                            }
-                                          },
+                                          onTap: !kIsWeb
+                                              ? () async {
+                                                  final result =
+                                                      await FilePicker.platform
+                                                          .pickFiles(
+                                                    type: FileType.custom,
+                                                    allowedExtensions: ['pdf'],
+                                                  );
+                                                  if (result != null) {
+                                                    final filePath = result
+                                                        .files.single.path;
+                                                    setState(() {
+                                                      this.filePath = filePath!;
+                                                    });
+                                                  }
+                                                }
+                                              : () async {
+                                                  final result =
+                                                      await FilePicker.platform
+                                                          .pickFiles(
+                                                    type: FileType.custom,
+                                                    allowedExtensions: ['pdf'],
+                                                  );
+                                                  if (result != null) {
+                                                    final fileBytes = result
+                                                        .files.single.bytes;
+                                                    setState(() {
+                                                      this.fileBytes =
+                                                          fileBytes!;
+                                                    });
+                                                  }
+                                                },
                                           child: Container(
                                             height: 50,
                                             decoration: BoxDecoration(
@@ -406,74 +425,167 @@ class _HomePageState extends ConsumerState<HomePage> {
                                         child: const Text('Cancel'),
                                       ),
                                       TextButton(
-                                        onPressed: () async {
-                                          if (filePath.isNotEmpty) {
-                                            Navigator.pop(ctx);
-                                          }
+                                        onPressed: !kIsWeb
+                                            ? () async {
+                                                if (filePath.isNotEmpty) {
+                                                  Navigator.pop(ctx);
+                                                }
 
-                                          if (filePath.isNotEmpty) {
-                                            await Future.delayed(
-                                              const Duration(milliseconds: 250),
-                                              () {},
-                                            );
-                                            setState(() {
-                                              _isBuildingChatBot = true;
-                                              currentState = 'Extracting data';
-                                            });
+                                                if (filePath.isNotEmpty) {
+                                                  await Future.delayed(
+                                                    const Duration(
+                                                      milliseconds: 250,
+                                                    ),
+                                                    () {},
+                                                  );
+                                                  setState(() {
+                                                    _isBuildingChatBot = true;
+                                                    currentState =
+                                                        'Extracting data';
+                                                  });
 
-                                            final textChunks = await ref
-                                                .read(
-                                                  chatBotListProvider.notifier,
-                                                )
-                                                .getChunksFromPDF(filePath);
+                                                  final textChunks = await ref
+                                                      .read(
+                                                        chatBotListProvider
+                                                            .notifier,
+                                                      )
+                                                      .getChunksFromPDF(
+                                                        filePath,
+                                                      );
 
-                                            setState(() {
-                                              currentState =
-                                                  'Building Chat Bot';
-                                            });
+                                                  setState(() {
+                                                    currentState =
+                                                        'Building Chat Bot';
+                                                  });
 
-                                            final embeddingsMap = await ref
-                                                .read(
-                                                  chatBotListProvider.notifier,
-                                                )
-                                                .batchEmbedChunks(textChunks);
+                                                  final embeddingsMap =
+                                                      await ref
+                                                          .read(
+                                                            chatBotListProvider
+                                                                .notifier,
+                                                          )
+                                                          .batchEmbedChunks(
+                                                            textChunks,
+                                                          );
 
-                                            final chatBot = ChatBot(
-                                              messagesList: [],
-                                              id: uuid.v4(),
-                                              title: '',
-                                              typeOfBot: TypeOfBot.pdf,
-                                              attachmentPath: filePath,
-                                              embeddings: embeddingsMap,
-                                              subject:
-                                                  titleController.text.isEmpty
-                                                      ? 'General'
-                                                      : titleController.text,
-                                            );
+                                                  final chatBot = ChatBot(
+                                                    messagesList: [],
+                                                    id: uuid.v4(),
+                                                    title: '',
+                                                    typeOfBot: TypeOfBot.pdf,
+                                                    attachmentPath: filePath,
+                                                    embeddings: embeddingsMap,
+                                                    subject: titleController
+                                                            .text.isEmpty
+                                                        ? 'General'
+                                                        : titleController.text,
+                                                  );
 
-                                            await ref
-                                                .read(
-                                                  chatBotListProvider.notifier,
-                                                )
-                                                .saveChatBot(chatBot);
-                                            await ref
-                                                .read(
-                                                  messageListProvider.notifier,
-                                                )
-                                                .updateChatBot(chatBot);
-                                            setState(() {
-                                              _isBuildingChatBot = false;
-                                              currentState = '';
-                                              filePath = '';
-                                            });
-                                            if (!_isBuildingChatBot) {
-                                              if (!context.mounted) {
-                                                return;
+                                                  await ref
+                                                      .read(
+                                                        chatBotListProvider
+                                                            .notifier,
+                                                      )
+                                                      .saveChatBot(chatBot);
+                                                  await ref
+                                                      .read(
+                                                        messageListProvider
+                                                            .notifier,
+                                                      )
+                                                      .updateChatBot(chatBot);
+                                                  setState(() {
+                                                    _isBuildingChatBot = false;
+                                                    currentState = '';
+                                                    filePath = '';
+                                                  });
+                                                  if (!_isBuildingChatBot) {
+                                                    if (!context.mounted) {
+                                                      return;
+                                                    }
+                                                    AppRoute.chat.push(context);
+                                                  }
+                                                }
                                               }
-                                              AppRoute.chat.push(context);
-                                            }
-                                          }
-                                        },
+                                            : () async {
+                                                if (fileBytes.isNotEmpty) {
+                                                  Navigator.pop(ctx);
+                                                }
+
+                                                if (fileBytes.isNotEmpty) {
+                                                  await Future.delayed(
+                                                    const Duration(
+                                                      milliseconds: 250,
+                                                    ),
+                                                    () {},
+                                                  );
+                                                  setState(() {
+                                                    _isBuildingChatBot = true;
+                                                    currentState =
+                                                        'Extracting data';
+                                                  });
+
+                                                  final textChunks = await ref
+                                                      .read(
+                                                        chatBotListProvider
+                                                            .notifier,
+                                                      )
+                                                      .getChunksFromPDFWeb(
+                                                        fileBytes,
+                                                      );
+
+                                                  setState(() {
+                                                    currentState =
+                                                        'Building Chat Bot';
+                                                  });
+
+                                                  final embeddingsMap =
+                                                      await ref
+                                                          .read(
+                                                            chatBotListProvider
+                                                                .notifier,
+                                                          )
+                                                          .batchEmbedChunks(
+                                                            textChunks,
+                                                          );
+
+                                                  final chatBot = ChatBot(
+                                                    messagesList: [],
+                                                    id: uuid.v4(),
+                                                    title: '',
+                                                    typeOfBot: TypeOfBot.pdf,
+                                                    attachmentPath: filePath,
+                                                    embeddings: embeddingsMap,
+                                                    subject: titleController
+                                                            .text.isEmpty
+                                                        ? 'General'
+                                                        : titleController.text,
+                                                  );
+
+                                                  await ref
+                                                      .read(
+                                                        chatBotListProvider
+                                                            .notifier,
+                                                      )
+                                                      .saveChatBot(chatBot);
+                                                  await ref
+                                                      .read(
+                                                        messageListProvider
+                                                            .notifier,
+                                                      )
+                                                      .updateChatBot(chatBot);
+                                                  setState(() {
+                                                    _isBuildingChatBot = false;
+                                                    currentState = '';
+                                                    filePath = '';
+                                                  });
+                                                  if (!_isBuildingChatBot) {
+                                                    if (!context.mounted) {
+                                                      return;
+                                                    }
+                                                    AppRoute.chat.push(context);
+                                                  }
+                                                }
+                                              },
                                         child: const Text('Create'),
                                       ),
                                     ],
