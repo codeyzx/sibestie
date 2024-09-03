@@ -200,14 +200,6 @@ The "Summary" feature generates summaries of the studied materials based on the 
 | ------------------------------------------ | ------------------------------------------ |
 | <img src="assets/docs/07.png" height=600/> | <img src="assets/docs/07.1.png" height=600/> |
 
-## Created by JTK Team
-
-- Yahya Alfon Sinaga
-- Daiva Raditya Pradipa
-- Athalie Aurora Puspanegara
-- Rafka Imanda Putra
-- M. Amadeus Andika Fadhil
-
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
